@@ -11,6 +11,11 @@ module.exports = () => new Promise((resolve, reject) => {
   const { errorColor, errorEmoji } = config;
 
   const ignoreMatches = [
+    // Used by Asguard
+    '@frosti/asguard',
+    'node-emoji',
+    'figlet',
+
     // Custom Alias' for @frosti boilerplated
     '@config/*',
     '@containers/*',
@@ -36,19 +41,6 @@ module.exports = () => new Promise((resolve, reject) => {
     'postcss',
     'stylus',
 
-    // Use by npm scripts
-    '@ind.ie/nodecert',
-    'husky',
-    'identity-obj-proxy',
-    'jest',
-    'npm-run-all',
-    'prettier',
-    'pretty-quick',
-
-    // Used by @frosti/scripts
-    'node-emoji',
-    'figlet',
-
     // Used by @frosti/server
     'chokidar',
     'colors',
@@ -56,7 +48,16 @@ module.exports = () => new Promise((resolve, reject) => {
     'cors',
     'express',
     'redirect-https',
-    'spdy'
+    'spdy',
+
+    // Used by npm scripts
+    '@ind.ie/nodecert',
+    'husky',
+    'identity-obj-proxy',
+    'jest',
+    'npm-run-all',
+    'prettier',
+    'pretty-quick'
   ];
 
   const ignoreDirs = ['.dist', 'dist', 'functions'];
