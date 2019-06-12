@@ -13,8 +13,9 @@ module.exports = () => new Promise((resolve, reject) => {
   const ignoreMatches = [
     // Used by Asguard
     '@frosti/asguard',
-    'node-emoji',
     'figlet',
+    'minimist',
+    'node-emoji',
 
     // Custom Alias' for @frosti boilerplated
     '@config/*',
