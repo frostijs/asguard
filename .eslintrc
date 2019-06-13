@@ -1,2 +1,5 @@
 extends:
   - '@frosti/eslint-config-base'
+
+rules:
+  no-console: 0

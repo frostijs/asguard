@@ -1,9 +1,10 @@
 #! /usr/bin/env node
 
 // CHECKS
-const depcheck = require('./depcheck');
-const npm = require('./npm');
-const { quit, start } = require('./_logger');
+const depcheck = require('./lib/depcheck');
+const security = require('./lib/security');
+const outdated = require('./lib/outdated');
+const { quit, start } = require('./lib/_logger');
 
 const asguard = () => {
   start();
@@ -11,9 +12,14 @@ const asguard = () => {
   // Check for unused depewndencies
   depcheck()
     // Check for security risks
-    .then(npm)
-    .then(() => {
-      quit(0);
+    .then(security)
+    .then(outdated)
+    .then((result) => {
+      if (result === 'updates') {
+        process.exit(0);
+      } else {
+        quit(0);
+      }
     })
     .catch(() => {
       quit(1);

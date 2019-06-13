@@ -1,4 +1,3 @@
-#! /usr/bin/env node
 require('colors');
 const depcheck = require('depcheck');
 const emoji = require('node-emoji');
@@ -8,7 +7,7 @@ const config = require('./_config');
 module.exports = () => new Promise((resolve, reject) => {
   const ROOT_DIR = path.resolve(process.cwd());
 
-  const { errorColor, errorEmoji } = config;
+  const { errorColor, errorEmoji, name } = config;
 
   const ignoreMatches = [
     // Used by Asguard
@@ -38,6 +37,7 @@ module.exports = () => new Promise((resolve, reject) => {
     'favicons',
     'fs-extra',
     'postcss-*',
+    'rollup',
     'rollup-*',
     'postcss',
     'stylus',
@@ -110,7 +110,7 @@ module.exports = () => new Promise((resolve, reject) => {
     if (missing || unused) {
       console.log('\n');
       console.warn(
-        `${errorEmoji}  ${config.name.bold} found ${count} ${errorType} dependencies:`.white
+        `${errorEmoji}   ${name.bold} found ${count} ${errorType} dependencies:`.white
       );
     } else {
       console.log('\n');
@@ -119,28 +119,28 @@ module.exports = () => new Promise((resolve, reject) => {
 
     if (dependencies.missing.length > 0) {
       console.log('\n');
-      console.log('   Missing Dependencies'.red);
-      console.log('   --------------------'.red);
+      console.log('    Missing Dependencies'.red);
+      console.log('    --------------------'.red);
       dependencies.missing.map((dependency) => {
-        console.log(`   ${dependency}`.red);
+        console.log(`    ${dependency}`.red);
       });
     }
 
     if (dependencies.dependencies.length > 0) {
       console.log('\n');
-      console.log('   Unused Dependencies'[errorColor]);
-      console.log('   -------------------'[errorColor]);
+      console.log('    Unused Dependencies'[errorColor]);
+      console.log('    -------------------'[errorColor]);
       dependencies.dependencies.map((dependency) => {
-        console.log(`   ${dependency}`[errorColor]);
+        console.log(`    ${dependency}`[errorColor]);
       });
     }
 
     if (dependencies.devDependencies.length > 0) {
       console.log('\n');
-      console.log('   Unused Dev Dependencies'[errorColor]);
-      console.log('   -----------------------'[errorColor]);
+      console.log('    Unused Dev Dependencies'[errorColor]);
+      console.log('    -----------------------'[errorColor]);
       dependencies.devDependencies.map((dependency) => {
-        console.log(`   ${dependency}`[errorColor]);
+        console.log(`    ${dependency}`[errorColor]);
       });
     }
 

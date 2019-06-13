@@ -1,6 +1,6 @@
 # Asguard
 
-Automated check to use as a guard against security risks and unused or missing dependencies.
+Automated check to use as a guard against security risks and unused, missing or outdated dependencies.
 
 Can be used standalone, but is highly customized for use by [Frosti Boilerplates](https://github.com/frostijs/cli).
 
@@ -8,7 +8,7 @@ Can be used standalone, but is highly customized for use by [Frosti Boilerplates
 
 Utilizes [npm audit](https://docs.npmjs.com/cli/audit) to scan project dependencies for any know vulnerabilities.
 
-### Find Unused or Missing Dependencies
+### Find Unused, Missing & OUt Of Date Dependencies
 
 Uses [depcheck](https://www.npmjs.com/package/depcheck) to look for any missing or unused dependencies in your projects `package.json` file.
 

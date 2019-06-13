@@ -43,7 +43,7 @@ const quit = (code) => {
   } else if (warnOnly) {
     code = 0;
     biglog(
-      `${emoji.get('cry')}  ${name.bold} found some problems, check logs above for more info.`,
+      ` ${emoji.get('cry')} ${name.bold} found some problems, check logs above for more info`,
       'yellow'
     );
   } else {
